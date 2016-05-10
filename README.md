@@ -17,3 +17,5 @@ Launch the application by navigating to the application in Terminal or on a comm
 ```bash
 electron .
 ```
+
+![Screenshot](screenshot.png)
