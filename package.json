@@ -1,5 +1,5 @@
 {
-  "name": "PixiAnimate Tests Tool",
+  "name": "pixi-animate-tests-tool",
   "version": "1.0.0",
   "description": "Create Unit test solutions for PixiAnimate",
   "main": "index.js",
