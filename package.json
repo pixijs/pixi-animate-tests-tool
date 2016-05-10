@@ -1,0 +1,10 @@
+{
+  "name": "PixiAnimate Tests Tool",
+  "version": "1.0.0",
+  "description": "Create Unit test solutions for PixiAnimate",
+  "main": "index.js",
+  "dependencies": {
+    "js-md5": "^0.4.0",
+    "pixi-animate": "^0.4.0"
+  }
+}
