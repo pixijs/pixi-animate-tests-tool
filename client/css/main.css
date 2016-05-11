@@ -40,10 +40,15 @@ body.dragging #solution {
     background:#ddd;
     color:#666;
     height:240px;
+    width:403px;
     margin-bottom:20px;
     resize:none;
     white-space:pre;
     line-height: 1.4;
+    overflow-x:hidden;
+    overflow-y: auto;
+    user-select:initial;
+    -webkit-user-select:initial;
 }
 #solution:focus, textarea:focus {
     outline:0;
