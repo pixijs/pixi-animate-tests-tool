@@ -170,7 +170,6 @@ p.softEquals = function(a, b) {
 p.compareImages = function(src1, src2) {
     var dataA = this.getImageData(src1);
     var dataB = this.getImageData(src2);
-    let x = 0;
     let len = dataA.length;
     let diff = dataA.filter(function(val, i) {
         return val !== dataB[i];
