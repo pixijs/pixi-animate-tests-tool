@@ -13,7 +13,7 @@ const Droppable = require('./js/droppable');
 
 const $ = document.querySelector.bind(document);
 
-// Create the renderer to convert the json into 
+// Create the renderer to convert the json into
 // a JSON solution which can be used by testing
 const renderer = new Renderer(
     $("#view-webgl"),
@@ -21,7 +21,7 @@ const renderer = new Renderer(
 );
 
 // Current filename
-let currentName;
+let currentName, currentPath;
 
 // drag-n-drop
 new Droppable($('body'), function(err, file) {
@@ -36,7 +36,7 @@ new Droppable($('body'), function(err, file) {
 
 // Click on the chooser button to browser for file
 $('#choose').addEventListener('click', function() {
-    dialog.showOpenDialog({ 
+    dialog.showOpenDialog({
         filters: [{ name: 'JavaScript', extensions: ['js'] }]
     }, function(fileNames){
         if (!fileNames) return;
@@ -46,9 +46,9 @@ $('#choose').addEventListener('click', function() {
 
 const save = $("#save");
 save.addEventListener('click', function() {
-    dialog.showSaveDialog({ 
+    dialog.showSaveDialog({
         title: 'Save Solution',
-        defaultPath: currentName + '.json',
+        defaultPath: path.join(currentPath, currentName + '.json'),
         filters: [{ name: 'JSON', extensions: ['json'] }]
     }, function(fileName){
         if (!fileName) return;
@@ -83,5 +83,6 @@ function open(file) {
         solution.innerHTML = JSON.stringify(result, null, '  ');
         save.className = '';
         currentName = path.basename(file, '.js');
+        currentPath = path.dirname(file);
     });
 }
