@@ -116,14 +116,14 @@ p.compare = function(file, solution, callback) {
             return callback(err);
         }
         if (this.hasWebGL) {
-            if (!this.strictEquals(solution.webgl, result.webgl)) {
-                if (!this.softEquals(solution.webglRenders, result.webglRenders)) {
+            if (!this.compareHash(solution.webgl, result.webgl)) {
+                if (!this.compareImages(solution.webglRenders, result.webglRenders)) {
                     return callback(new Error('WebGL results do not match.'));
                 }
             }
         }
-        if (!this.strictEquals(solution.canvas, result.canvas)) {
-            if (!this.softEquals(solution.canvasRenders, result.canvasRenders)) {
+        if (!this.compareHash(solution.canvas, result.canvas)) {
+            if (!this.compareImages(solution.canvasRenders, result.canvasRenders)) {
                 return callback(new Error('Canvas results do not match.'));
             }
         }
@@ -133,13 +133,13 @@ p.compare = function(file, solution, callback) {
 
 /**
  * Compare two arrays of images
- * @method softEquals
+ * @method compareImages
  * @private
  * @param {Array} a
  * @param {Array} b
  * @return {Boolean} If we're equal
  */
-p.softEquals = function(a, b) {
+p.compareImages = function(a, b) {
     if (a === b) {
         return true;
     }
@@ -162,13 +162,13 @@ p.softEquals = function(a, b) {
 
 /**
  * Compare two arrays
- * @method strictEquals
+ * @method compareHash
  * @private
  * @param {Array} a
  * @param {Array} b
  * @return {Boolean} If we're equal
  */
-p.strictEquals = function(a, b) {
+p.compareHash = function(a, b) {
     if (a === b) {
         return true;
     }
