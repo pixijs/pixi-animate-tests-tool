@@ -122,11 +122,11 @@ p.compare = function(file, solution, callback) {
             return callback(err);
         }
         if (this.hasWebGL) {
-            if (!this.compare(solution.webgl, result.webgl)) {
+            if (!this.compareFrames(solution.webgl, result.webgl)) {
                 return callback(new Error('WebGL results do not match.'));    
             }
         }
-        if (!this.compare(solution.canvas, result.canvas)) {
+        if (!this.compareFrames(solution.canvas, result.canvas)) {
             return callback(new Error('Canvas results do not match.'));
         }
         callback(null, true);
@@ -134,14 +134,14 @@ p.compare = function(file, solution, callback) {
 };
 
 /**
- * Compare two arrays
- * @method compare
+ * Compare two arrays of frames
+ * @method compareFrames
  * @private
  * @param {Array} a
  * @param {Array} b
  * @return {Boolean} If we're equal
  */
-p.compare = function(a, b) {
+p.compareFrames = function(a, b) {
     if (a === b) {
         return true;
     }
