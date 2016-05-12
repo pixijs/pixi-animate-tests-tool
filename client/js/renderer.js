@@ -13,14 +13,14 @@ const Renderer = function(viewWebGL, viewContext2d) {
     this.stage = new PIXI.Container();
     this.hasWebGL = PIXI.utils.isWebGLSupported();
     if (this.hasWebGL) {
-        this.webgl = new PIXI.WebGLRenderer(32, 32, {
+        this.webgl = new PIXI.WebGLRenderer(Renderer.WIDTH, Renderer.HEIGHT, {
             view: viewWebGL,
             backgroundColor: 0xffffff,
             antialias: false,
             preserveDrawingBuffer: true
         });
     }
-    this.canvas = new PIXI.CanvasRenderer(32, 32, {
+    this.canvas = new PIXI.CanvasRenderer(Renderer.WIDTH, Renderer.HEIGHT, {
         view: viewContext2d,
         backgroundColor: 0xffffff,
         antialias: false,
@@ -31,11 +31,15 @@ const Renderer = function(viewWebGL, viewContext2d) {
     this.render();
 
     this.instance = null;
-    this.imagediff = new ImageDiff(32, 32, 0.01);
+    this.imagediff = new ImageDiff(Renderer.WIDTH, Renderer.HEIGHT, Renderer.TOLERANCE);
 };
 
 // Reference to the prototype
 const p = Renderer.prototype;
+
+Renderer.WIDTH = 32;
+Renderer.HEIGHT = 32;
+Renderer.TOLERANCE = 0.01;
 
 /**
  * Rerender the stage
