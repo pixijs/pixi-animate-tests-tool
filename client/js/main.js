@@ -7,9 +7,16 @@ const path = require('path');
 const electron = require('electron');
 const remote = electron.remote;
 const clipboard = electron.clipboard;
-const dialog = remote.require('dialog');
+let dialog;
 const Renderer = require('./js/renderer');
 const Droppable = require('./js/droppable');
+
+try {
+    dialog = remote.require('dialog');
+}
+catch (e) {
+    dialog = remote.dialog;
+}
 
 const $ = document.querySelector.bind(document);
 
