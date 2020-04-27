@@ -1,5 +1,6 @@
 "use strict";
 
+require('pixi.js');
 require('pixi-animate');
 
 const fs = require('fs');
