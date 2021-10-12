@@ -4,7 +4,7 @@
   "description": "Create Unit test solutions for PixiAnimate",
   "main": "index.js",
   "dependencies": {
-    "electron": "^4.0.6",
+    "electron": "^11.5.0",
     "electron-prebuilt": "^1.2.7",
     "js-md5": "^0.4.0",
     "pixi.js": "^4.8.0",
